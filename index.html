@@ -164,7 +164,10 @@
             cursor: pointer;
         }
         .button:hover {
-            background-color: #1ED760;
+            background-color: #45a049; /* Cor do botão ao passar o mouse */
+        }
+        .cancel-button:hover {
+            background-color: #FF0000; /* Cor do botão ao passar o mouse */
         }
         .bottom-button {
             position: relative;
@@ -174,6 +177,7 @@
         .cancel-button {
             background-color: #FF0000;
             margin-top: 10px;
+            margin-bottom: 10px;
         }
         .hidden {
             display: none;
@@ -203,18 +207,23 @@
 </div>
 
 <div class="popup" id="paymentPopup">
-    <div class="summary">Resumo do pedido</div>
-    <div class="total" id="orderTotal">R$ 35</div>
-    <div class="fee">Taxa já incluída</div>
-    <div class="message">Para processamento e emissão do cartão pré-pago cobramos uma taxa de R$ 5.</div>
-    <button class="button" id="payButton">PAGAR VIA WHATSAPP</button>
+    <div class="summary">Valor final do pedido</div>
+    <div class="total" id="orderTotal">R$ 20</div>
+    <div class="fee">Para processamento e emissão do cartão pré-pago incluímos uma taxa de R$ 5.</div>
+    <button href="#" class="button" id="payButton">REALIZAR PAGAMENTO</button>
     <button class="button cancel-button" id="cancelButton">CANCELAR PEDIDO</button>
 </div>
 
 <button class="button bottom-button" id="continueButton">CONTINUAR</button>
 
 <script>
+    //Oculta o botão "Continuar" ao abrir a página.
+    document.getElementById('continueButton').classList.add('hidden'); // Oculta o botão "Continuar"
+    
     function selectCard(cardId) {
+    	document.getElementById('paymentPopup').classList.remove('active');
+    	// Mostra o botão "Continuar" ao selecionar a opção
+        document.getElementById('continueButton').classList.remove('hidden'); 
         // Remove a classe 'selected' de todos os cards
         var cards = document.querySelectorAll('.card');
         cards.forEach(function(card) {
