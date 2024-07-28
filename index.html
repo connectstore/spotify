@@ -221,8 +221,8 @@
     document.getElementById('continueButton').classList.add('hidden'); // Oculta o botão "Continuar"
     
     function selectCard(cardId) {
-    	document.getElementById('paymentPopup').classList.remove('active');
-    	// Mostra o botão "Continuar" ao selecionar a opção
+        document.getElementById('paymentPopup').classList.remove('active');
+        // Mostra o botão "Continuar" ao selecionar a opção
         document.getElementById('continueButton').classList.remove('hidden'); 
         // Remove a classe 'selected' de todos os cards
         var cards = document.querySelectorAll('.card');
@@ -231,9 +231,11 @@
         });
 
         // Adiciona a classe 'selected' ao card clicado
-        var selectedCard = document.getElementById(cardId);
+        var selectedCard = document.querySelector('input#' + cardId);
         selectedCard.parentElement.classList.add('selected');
+        selectedCard.checked = true;
     }
+
 
     document.getElementById('continueButton').addEventListener('click', function() {
         var selectedValue = document.querySelector('input[name="value"]:checked');
